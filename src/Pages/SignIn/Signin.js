@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import './Signin.css';
+import { login } from '../../../src/Services/userService';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 const emailRegex = /^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$/;
 const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+
 
 function Signin() {
     const [email, setEmail] = React.useState("");
@@ -25,31 +27,69 @@ function Signin() {
         }
         else {
             const emailValidation = emailRegex.test(email)
+            console.log(emailValidation);
             const passwordValidation = passRegex.test(password)
-            if (emailValidation && passwordValidation) {
-                setregexobj({ ...regexobj, emailborder: false })
-                setregexhelpertext({ ...regexhelpertext, emailhelpertext: "" })
-
-                setregexobj({ ...regexobj, passwordborder: false })
-                setregexhelpertext({ ...regexhelpertext, passwordhelpertext: "" })
-                console.log(regexobj);
+            if (emailValidation) {
+                setregexobj(regexobj => ({
+                    ...regexobj,
+                    emailborder: false
+                }));
+                console.log("11", regexobj);
+                setregexhelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    emailhelpertext: ""
+                }))
             }
             else {
-                if (emailValidation && !passwordValidation) {
-                    setregexobj({ ...regexobj, emailborder: false, passwordborder: true })
-                    setregexhelpertext({ ...regexhelpertext, emailhelpertext: "", passwordhelpertext: "Enter a valid password" })
-                    console.log(regexobj);
+                setregexobj(regexobj => ({
+                    ...regexobj,
+                    emailborder: true
+                }));
+                console.log("12", regexobj);
+                setregexhelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    emailhelpertext: "Enter the correct email"
+                }))
+            }
+            if (passwordValidation) {
+                setregexobj(regexobj => ({
+                    ...regexobj,
+                    passwordborder: false
+                }));
+                console.log(regexobj);
+                setregexhelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    passwordhelpertext: ""
+                }))
+            }
+            else {
+                setregexobj(regexobj => ({
+                    ...regexobj,
+                    passwordborder: true
+                }));
+                console.log(regexobj);
+                setregexhelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    passwordhelpertext: "Enter the corret password"
+                }))
+            }
+            if (emailValidation === true && passwordValidation === true) {
+                let obj = {
+                    "email": email,
+                    "password": password
                 }
-                else if (!emailValidation && passwordValidation) {
-                    setregexobj({ ...regexobj, emailborder: true, passwordborder: false })
-                    setregexhelpertext({ ...regexhelpertext, emailhelpertext: "Enter a correct email", passwordhelpertext: "" })
-                    console.log(regexobj);
-                }
-                else {
-                    setregexobj({ ...regexobj, emailborder: true, passwordborder: true })
-                    setregexhelpertext({ ...regexhelpertext, emailhelpertext: "Enter a valid email", passwordhelpertext: "Enter a valid password" })
-                    console.log(regexobj);
-                }
+
+                login(obj).then((res) => {
+                    if (!res) {
+                        console.log(res);
+                    }
+                    console.log(res)
+                })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+
+                console.log(obj);
             }
         }
     }
@@ -80,7 +120,7 @@ function Signin() {
                     Not your computer? Use Guest mode to sign in privately.</div>
                 <div className='account'>
                     <h2 className='accountcolor'><a id="GFG" href='SignIn.css'>Create account</a></h2>
-                    <div className='btm'>
+                    <div className='button'>
                         <Button onClick={submit} variant="contained">Next</Button>
                     </div>
                 </div>

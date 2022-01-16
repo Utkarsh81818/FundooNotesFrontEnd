@@ -24,19 +24,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 10vh;
 }
 .form{
     position: relative;
     display: flex;
     flex-direction: column;
     width: 38vw;
-    height: 76vh;
+    height: 75vh;
     border: 1px solid gainsboro;
     border-radius: 12px;
 }
 .header{
-    margin-top: 30px;
+    margin-top: 16px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -76,6 +76,10 @@
     display: flex;
     justify-content: center;
 }
+.button{
+    padding: 11px;
+}
+
 #GFG{
     color: #3333c1ad;
     text-decoration: none;

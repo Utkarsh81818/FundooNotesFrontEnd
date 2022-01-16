@@ -89,7 +89,7 @@ font-size: large;
     padding: 17px 0px;
 }
 .Img-class{
-    width: 15vw;
+    width: 17vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,5 +115,5 @@ font-size: large;
 }
 
 .button-end{
-    margin: 8px 0px;
+    margin: 8px -14px;
 }

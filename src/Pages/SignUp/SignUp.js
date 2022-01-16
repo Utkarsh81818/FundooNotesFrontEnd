@@ -1,12 +1,133 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import './SignUp.css';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-
+import image from '../../download.png'
+const emailRegex = /^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$/;
+const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+const firstNameRegex = /^[A-Z]{1}[a-z]{2,}/;
+const lastNameRegex = /^[A-Z]{1}[a-z]{2,}/;
 
 const SignUp = () => {
+    const [firstName, setFirstName] = React.useState("")
+    const [lastName, setLastName] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [password, setPassword] = React.useState("")
+    const [regexObj, setRegexObj] = React.useState({ firstNameBorder: false, lastNameBorder: false, emailBorder: false, paasswordBorder: false })
+    const [regexhelpertext, sethelpertext] = React.useState({ firstNameHelperText: "", lastNameHelperText: "", emailHelperText: "", passwordHelperText: "" })
+
+    const getMail = (e) => {
+        setEmail(e.target.value)
+    }
+    const getPassword = (e) => {
+        setPassword(e.target.value)
+    }
+    const getFirstName = (e) => {
+        setFirstName(e.target.value)
+    }
+    const getLastName = (e) => {
+        setLastName(e.target.value)
+    }
+    const submit = () => {
+        if (email === "" && password === "" && firstName === "" && lastName === "") {
+            setRegexObj({ ...regexObj, firstNameBorder: true, lastNameBorder: true, emailBorder: true, passwordBorder: true })
+            sethelpertext({ ...regexhelpertext, firstNameHelperText: "Enter a correct First Name", lastNameHelperText: "Enter a correct Last Name", emailHelperText: "Enter correct email", passwordHelperText: "Enter correct password" })
+        }
+        else {
+            const firstNameValidPattern = firstNameRegex.test(firstName)
+            const lastNameValidPattern = lastNameRegex.test(lastName)
+            const emailValidPattern = emailRegex.test(email)
+            const passwordValidPattern = passRegex.test(password)
+            console.log("12", firstNameValidPattern);
+            console.log("22", lastNameValidPattern);
+            console.log("33", emailValidPattern);
+            console.log("44", passwordValidPattern);
+            if (firstNameValidPattern) {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    firstNameBorder: false
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    firstNameHelperText: ""
+                }))
+            }
+            else {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    firstNameBorder: true
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    firstNameHelperText: "Enter the correct first name"
+                }))
+            }
+            if (emailValidPattern) {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    emailBorder: false
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    emailHelperText: ""
+                }))
+            }
+            else {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    emailBorder: true
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    emailHelperText: "Enter the corret email"
+                }))
+            }
+            if (passwordValidPattern) {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    passwordBorder: false
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    passwordHelperText: ""
+                }))
+            }
+            else {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    passwordBorder: true
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    passwordHelperText: "Enter the corret password"
+                }))
+            }
+            if (lastNameValidPattern) {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    lastNameBorder: false
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    lastNameHelperText: ""
+                }))
+            }
+            else {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    lastNameBorder: true
+                }));
+                sethelpertext(regexhelpertext => ({
+                    ...regexhelpertext,
+                    lastNameHelperText: "Enter the corret lastname"
+                }))
+            }
+        }
+    }
     return (
         <div className="Box-class">
             <div className="container">
@@ -24,21 +145,21 @@ const SignUp = () => {
                     </div>
                     <div className='name'>
                         <div className='firstname'>
-                            <TextField id="Name" label="First name" size='small' variant="outlined" />
+                            <TextField id="Name" onChange={getFirstName} error={regexObj.firstNameBorder} label="First name" size='small' variant="outlined" />
                         </div>
                         <div className='lastname'>
-                            <TextField id="Lastname" label="Last name" size='small' variant="outlined" />
+                            <TextField id="Lastname" onChange={getLastName} error={regexObj.lastNameBorder} label="Last name" size='small' variant="outlined" />
                         </div>
                     </div>
                     <div className='email'>
-                        <TextField id="email" label="Username" size='small' variant="outlined" />
+                        <TextField id="email" onChange={getMail} error={regexObj.emailBorder} label="Username" size='small' variant="outlined" />
                     </div>
                     <div className='textarea'>
                         You can use letters, numbers & periods
                     </div>
                     <div className='password-rectangle'>
                         <div className='password'>
-                            <TextField id="password" label="Password" size='small' variant="outlined" />
+                            <TextField id="password" onChange={getPassword} error={regexObj.passwordBorder} label="Password" size='small' variant="outlined" />
                         </div>
                         <div className='confirm'>
                             <TextField id="confirm" label="Confirm" size='small' variant="outlined" />
@@ -57,12 +178,12 @@ const SignUp = () => {
                             <h4><a href='sign'>SignIn Instead</a></h4>
                         </div>
                         <div className="button-end">
-                            <Button variant="contained">Next</Button>
+                            <Button onClick={submit} variant="contained">Next</Button>
                         </div>
                     </div>
                 </div>
                 <div className="Img-class">
-                    <img src="Google-Fined-Banner.jpeg" ></img>
+                    <img src={image} ></img>
                 </div>
             </div>
         </div>
