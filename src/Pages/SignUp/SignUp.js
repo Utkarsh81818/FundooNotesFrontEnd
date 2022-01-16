@@ -3,6 +3,7 @@
 import React from "react";
 import './SignUp.css';
 import TextField from '@mui/material/TextField';
+import { Register } from '../../Services/userService';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
@@ -125,6 +126,23 @@ const SignUp = () => {
                     ...regexhelpertext,
                     lastNameHelperText: "Enter the corret lastname"
                 }))
+            }
+
+            if (emailValidPattern === true && passwordValidPattern === true && firstNameValidPattern === true && lastNameValidPattern === true) {
+                let obj = {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": password
+                }
+
+                Register(obj).then((res) => {
+                    console.log(res)
+                })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+                console.log(obj);
             }
         }
     }
