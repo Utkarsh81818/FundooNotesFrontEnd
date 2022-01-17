@@ -84,7 +84,7 @@ const SignUp = () => {
                 }));
                 sethelpertext(regexhelpertext => ({
                     ...regexhelpertext,
-                    emailHelperText: "Enter the corret email"
+                    emailHelperText: "Sorry, your username must be between 6 and 30 characters long"
                 }))
             }
             if (passwordValidPattern) {
@@ -104,7 +104,7 @@ const SignUp = () => {
                 }));
                 sethelpertext(regexhelpertext => ({
                     ...regexhelpertext,
-                    passwordHelperText: "Enter the corret password"
+                    passwordHelperText: "Enter the correct password"
                 }))
             }
             if (lastNameValidPattern) {
@@ -124,7 +124,7 @@ const SignUp = () => {
                 }));
                 sethelpertext(regexhelpertext => ({
                     ...regexhelpertext,
-                    lastNameHelperText: "Enter the corret lastname"
+                    lastNameHelperText: "Enter the correct lastname"
                 }))
             }
 
@@ -163,21 +163,21 @@ const SignUp = () => {
                     </div>
                     <div className='name'>
                         <div className='firstname'>
-                            <TextField id="Name" onChange={getFirstName} error={regexObj.firstNameBorder} label="First name" size='small' variant="outlined" />
+                            <TextField id="Name" onChange={getFirstName} error={regexObj.firstNameBorder} helperText={regexhelpertext.firstNameHelperText} label="First name" size='small' variant="outlined" />
                         </div>
                         <div className='lastname'>
-                            <TextField id="Lastname" onChange={getLastName} error={regexObj.lastNameBorder} label="Last name" size='small' variant="outlined" />
+                            <TextField id="Lastname" onChange={getLastName} error={regexObj.lastNameBorder} helperText={regexhelpertext.lastNameHelperText} label="Last name" size='small' variant="outlined" />
                         </div>
                     </div>
                     <div className='email'>
-                        <TextField id="email" onChange={getMail} error={regexObj.emailBorder} label="Username" size='small' variant="outlined" />
+                        <TextField id="email" onChange={getMail} error={regexObj.emailBorder} helperText={regexhelpertext.emailHelperText} label="Username" size='small' variant="outlined" />
                     </div>
                     <div className='textarea'>
                         You can use letters, numbers & periods
                     </div>
                     <div className='password-rectangle'>
                         <div className='password'>
-                            <TextField id="password" onChange={getPassword} error={regexObj.passwordBorder} label="Password" size='small' variant="outlined" />
+                            <TextField id="password" onChange={getPassword} error={regexObj.passwordBorder} helperText={regexhelpertext.passwordHelperText} label="Password" size='small' variant="outlined" />
                         </div>
                         <div className='confirm'>
                             <TextField id="confirm" label="Confirm" size='small' variant="outlined" />
