@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 const emailRegex = /^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$/;
 const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
-
 function Signin() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -84,11 +83,11 @@ function Signin() {
                         console.log(res);
                     }
                     console.log(res)
+                    console.log(res.data.data)
+                    localStorage.setItem("Token : ", res.data.data)
+                }).catch((err) => {
+                    console.log(err)
                 })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-
                 console.log(obj);
             }
         }

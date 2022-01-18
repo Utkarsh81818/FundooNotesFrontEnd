@@ -1,0 +1,54 @@
+.containerNoteOne{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 150px;
+    border: 2px solid gray;
+    border-radius: 4px;
+}
+
+.containerNoteTwo{
+    height: 33.3%;
+    width: 100%;
+}
+.containerNoteThree{
+    height: 33.3%;
+    width: 100%;
+}
+.containerNoteFour{
+    height: 33.3%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inputFields{
+    height: 100%;
+    width: 95%;
+    border: none;
+    outline: none;
+    font-size: 22px;
+}
+
+.iconHolder{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ButtonClose{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+    
+.closeButtonOne{
+    outline: none;
+    border: none;
+    font-size: 23px;
+    color: gray;
+}

@@ -1,0 +1,147 @@
+.containerOne{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid rgb(63, 60, 60);
+    width: 100%;
+    height: 36%;
+}
+
+.elementOne{
+    display: flex;
+    position: relative;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+p{
+    background-color: bisque
+}
+.elementOne ,p{
+    position: relative;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.elementTwo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white ;
+    align-content: flex-start;
+}
+.elementTwo,input{
+    height: 8vh;
+    width: 350px;
+    background-color: gainsboro;
+    border: none;
+    border-radius: 15px;
+}
+.elementThree{
+    display: flex;
+}
+.box1{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 08px;
+}
+.box2{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 08px;
+}
+.box3{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 08px;
+}
+.elementFour{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.side-icon{
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 10px;
+}
+.side-icon1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;    
+}
+.body-content{
+    position:relative;
+    display : flex;
+    width:30%;
+    background-color: gainsboro;
+    
+}
+
+.sidebar
+{ 
+    width: 75%;
+    background: rgb(238, 234, 234);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 50px 0px;
+    height: 32vh;
+}
+.item1
+{ 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+
+}
+.item3
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+.box4
+{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+.item2
+{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+   
+}
+.input{
+    width: 45vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: vertical;
+}
